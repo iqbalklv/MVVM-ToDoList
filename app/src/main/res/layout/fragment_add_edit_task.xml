@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <EditText
+            android:id="@+id/et_task_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            tools:text="Example Task"
+            android:inputType="text"
+            android:hint="Task Name"/>
+
+        <androidx.appcompat.widget.AppCompatCheckBox
+            android:id="@+id/cb_important"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:minHeight="0dp"
+            android:text="@string/important_label"/>
+
+        <TextView
+            android:id="@+id/tv_task_date_created"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            tools:text="Created: July 14, 2021. 1:42 AM"/>
+
+    </LinearLayout>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="16dp"
+        android:src="@drawable/ic_baseline_check_24"
+        />
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

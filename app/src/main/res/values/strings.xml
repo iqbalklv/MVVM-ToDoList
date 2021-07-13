@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">ToDoList</string>
+    <string name="important_label">Important</string>
 </resources>
