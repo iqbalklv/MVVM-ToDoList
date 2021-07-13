@@ -2,6 +2,8 @@ plugins {
     id 'com.android.application'
     id 'kotlin-android'
     id 'kotlin-parcelize'
+    id 'kotlin-kapt'
+    id 'dagger.hilt.android.plugin'
 }
 
 android {
@@ -49,4 +51,8 @@ dependencies {
 
     //Room, SQLite
     implementation("androidx.room:room-runtime:$room_version")
+
+    //Dagger Hilt, Easier Dependency Injection
+    implementation "com.google.dagger:hilt-android:$daggerhilt_version"
+    kapt "com.google.dagger:hilt-android-compiler:$daggerhilt_version"
 }
