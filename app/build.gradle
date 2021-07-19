@@ -4,12 +4,13 @@ plugins {
     id 'kotlin-parcelize'
     id 'kotlin-kapt'
     id 'dagger.hilt.android.plugin'
+    id "androidx.navigation.safeargs.kotlin"
 }
 
 android {
     compileSdkVersion 30
     buildToolsVersion "30.0.3"
-    dataBinding.enabled = true
+    android.buildFeatures.dataBinding = true
 
     defaultConfig {
         applicationId "com.miqbalkalevi.todolist"
