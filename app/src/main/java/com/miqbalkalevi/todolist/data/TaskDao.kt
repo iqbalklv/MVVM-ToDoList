@@ -27,5 +27,8 @@ interface TaskDao {
     @Delete
     suspend fun delete(task: Task)
 
+    @Query("DELETE FROM table_task WHERE isDone = 1")
+    suspend fun deleteAllCompletedTask()
+
     //suspend: move the function to another thread to avoid blocking.
 }
