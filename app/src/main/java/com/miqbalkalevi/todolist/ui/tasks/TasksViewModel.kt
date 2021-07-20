@@ -5,6 +5,8 @@ import com.miqbalkalevi.todolist.data.PreferenceManager
 import com.miqbalkalevi.todolist.data.SortOrder
 import com.miqbalkalevi.todolist.data.Task
 import com.miqbalkalevi.todolist.data.TaskDao
+import com.miqbalkalevi.todolist.ui.RESULT_ADD_TASK_OK
+import com.miqbalkalevi.todolist.ui.RESULT_EDIT_TASK_OK
 import dagger.assisted.Assisted
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.channels.Channel
@@ -68,9 +70,21 @@ class TasksViewModel @Inject constructor(
         tasksEventChannel.send(TasksEvent.NavigateToAddTaskScreen)
     }
 
+    fun onAddEditResult(result: Int) {
+        when (result) {
+            RESULT_ADD_TASK_OK -> showTaskSavedConfirmationMessage("Task added")
+            RESULT_EDIT_TASK_OK -> showTaskSavedConfirmationMessage("Task updated")
+        }
+    }
+
+    private fun showTaskSavedConfirmationMessage(text: String) = viewModelScope.launch {
+        tasksEventChannel.send(TasksEvent.ShowTaskSavedConfirmationMessage(text))
+    }
+
     sealed class TasksEvent {
         object NavigateToAddTaskScreen : TasksEvent()
         data class NavigateToEditTaskScreen(val task: Task) : TasksEvent()
         data class ShowUndoDeleteTaskMessage(val task: Task) : TasksEvent()
+        data class ShowTaskSavedConfirmationMessage(val msg: String) : TasksEvent()
     }
 }

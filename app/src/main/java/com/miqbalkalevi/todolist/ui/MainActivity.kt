@@ -1,5 +1,6 @@
 package com.miqbalkalevi.todolist.ui
 
+import android.app.Activity
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.navigation.NavController
@@ -28,3 +29,6 @@ class MainActivity : AppCompatActivity() {
         return navController.navigateUp() || super.onSupportNavigateUp()
     }
 }
+
+const val RESULT_ADD_TASK_OK = Activity.RESULT_FIRST_USER
+const val RESULT_EDIT_TASK_OK = Activity.RESULT_FIRST_USER + 1

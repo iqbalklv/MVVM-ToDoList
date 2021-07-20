@@ -12,10 +12,10 @@ interface TaskDao {
             SortOrder.BY_DATE -> getTasksSortedByDateCreated(query, hideCompleted)
         }
 
-    @Query("SELECT * FROM table_task WHERE (isDone != :hideCompleted or isDone = 0) AND name LIKE '%' ||  :searchQuery || '%' ORDER BY isImportant DESC, name ASC")
+    @Query("SELECT * FROM table_task WHERE (isDone != :hideCompleted or isDone = 0) AND name LIKE '%' ||  :searchQuery || '%' ORDER BY isDone ASC, isImportant DESC, name COLLATE NOCASE ASC")
     fun getTasksSortedByName(searchQuery: String, hideCompleted: Boolean): Flow<List<Task>>
 
-    @Query("SELECT * FROM table_task WHERE (isDone != :hideCompleted or isDone = 0) AND name LIKE '%' ||  :searchQuery || '%' ORDER BY isImportant DESC, created ASC")
+    @Query("SELECT * FROM table_task WHERE (isDone != :hideCompleted or isDone = 0) AND name LIKE '%' ||  :searchQuery || '%' ORDER BY isDone ASC, isImportant DESC, created ASC")
     fun getTasksSortedByDateCreated(searchQuery: String, hideCompleted: Boolean): Flow<List<Task>>
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
